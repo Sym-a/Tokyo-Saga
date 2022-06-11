@@ -55,10 +55,6 @@ function TeleportTo(newPlace)
     end
 end
 
-function Money()
-    game:GetService("ReplicatedStorage").Quest.IJob2:FireServer()
-end
-
 
 -- gui --
 
@@ -66,7 +62,6 @@ local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloo
 local w = library:CreateWindow("Tokyo Saga")
 local b = w:CreateFolder("Training")
 local c = w:CreateFolder("Teleport")
-local d = w:CreateFolder("Money")
 local b2 = w:CreateFolder(".Destroy Gui")
 
 b2:DestroyGui()
@@ -101,8 +96,4 @@ end)
 
 c:Button("Npc Bottles",function()
     TeleportTo(npcBottles)
-end)
-
-d:Button("Bottle Buyer", function()
-    Money()
 end)

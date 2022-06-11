@@ -82,6 +82,9 @@ function bottle()
         mousemoveabs(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2 + 50)
         mouse1click()
         wait(2)
+        if not bottleAutomation then
+            break
+        end
     end
         
 end

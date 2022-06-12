@@ -1,7 +1,8 @@
 -- Variables --
 
 local workspace = game:GetService("Workspace")
-local mouse = game.Players.LocalPlayer:GetMouse()
+local player = game.PLayers.LocalPlayer
+local mouse = player:GetMouse()
 local camera = workspace.CurrentCamera
 local gym = workspace["Local Gym"]["Local Gym"]
 local pizza = workspace.Pizza
@@ -99,6 +100,7 @@ local b = w:CreateFolder("Training")
 local c = w:CreateFolder("Teleport")
 local d = w:CreateFolder("Automation")
 local e = w:CreateFolder(".Destroy Gui")
+local f = w:CreateFolder("Stats")
 
 -- Training --
 
@@ -135,6 +137,28 @@ end)
 c:Button("Bottle Buyer",function()
     TeleportTo(bottleBuyer)
 end)
+
+-- Stats --
+
+local hSpeed = player.Stats.HitSpeed
+local strengthSt = player.Stats.Strength
+local defenseSt = player.Stats.Defense
+local speedSt = player.Stats.Speed
+local stamSt = player.Stats.Stamina
+
+local hitSpeedN = "Hit Speed"
+local strengthN = "Strength"
+local defenseN = "Defense"
+local speedN = "Speed"
+local stamN = "Stamina"
+
+f:Button(hitSpeedN,function()
+    hitSpeedN = hSpeed.Value
+    wait(2)
+    hitSpeedN = "Hit Speed"
+end)
+
+
 
 -- Automation --
 

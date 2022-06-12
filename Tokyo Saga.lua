@@ -154,6 +154,6 @@ end)
 
 d:Toggle("Bottles",function(bool)
     bottleAutomation = bool
-    print(bottleAutomation)
+    print("Bottle automation is set to " .. bottleAutomation)
     if bottleAutomation then bottle() end
 end)

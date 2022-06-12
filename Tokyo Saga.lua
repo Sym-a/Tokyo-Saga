@@ -74,18 +74,13 @@ function bottle()
 
     while bottleAutomation do
         TeleportTo(npcBottles)
-        wait(1)
-        mousemoveabs(camera.ViewportSize.X / 2, (camera.ViewportSize.Y / 2) + 50)
-        mouse1click()
-        wait(2)
+        wait(0.5)
+        fireclickdetector(game:GetService("Workspace")["Npc Bottles"].ClickDetector)
+        wait(0.5)
         TeleportTo(bottleBuyer)
+        wait(0.5)
+        fireclickdetector(game:GetService("Workspace")["Bottle Buyer"].ClickDetector)
         wait(1)
-        mousemoveabs(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2 + 50)
-        mouse1click()
-        wait(2)
-        if not bottleAutomation then
-            break
-        end
     end
         
 end

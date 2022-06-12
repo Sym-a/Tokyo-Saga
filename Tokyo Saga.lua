@@ -8,8 +8,13 @@ local gym = workspace["Local Gym"]["Local Gym"]
 local pizza = workspace.Pizza
 local bottleBuyer = workspace["Bottle Buyer"].HumanoidRootPart
 local npcBottles = workspace["Npc Bottles"].HumanoidRootPart
+local motorQuestGiver = workspace["Quest Motor"]
+local motorBuyer = workspace["Motor Buyer"]
+local motorPart = workspace:FindFirstChild("Motor")
 
+count = 0
 bottleAutomation = false
+motorAutomation = false
 
 if pizza:IsA("Folder") then
     pizzaPlace = pizza.Pizza
@@ -62,7 +67,7 @@ end
 function TeleportTo(newPlace)
     local plr = game.Players.LocalPlayer
     if plr.Character then
-        plr.Character.HumanoidRootPart.CFrame = newPlace.CFrame * CFrame.new(0, 0, -5)
+        plr.Character.HumanoidRootPart.CFrame = newPlace.CFrame * CFrame.new(0, 0, -1)
         plr.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(180), 0)
         camera.CFrame = newPlace.CFrame * CFrame.Angles(math.rad(180), 0, 0)
     end
@@ -83,6 +88,39 @@ function bottle()
         wait(1)
     end
         
+end
+
+function motor()
+
+    while motorAutomation do
+        TeleportTo(motorQuestGiver.HumanoidRootPart)
+        wait(0.1)
+        fireclickdetector(motorQuestGiver.ClickDetector)
+        wait()
+        fireclickdetector(motorQuestGiver.ClickDetector)
+        wait(0.5)
+        fireclickdetector(motorQuestGiver.ClickDetector)
+        wait(0.5)
+        fireclickdetector(motorQuestGiver.ClickDetector)
+        wait(1)
+        TeleportTo(motorPart.Base)
+        wait(0.1)
+        fireclickdetector(motorPart.ClickDetector)
+        wait()
+        fireclickdetector(motorPart.ClickDetector)
+        fireclickdetector(motorPart.ClickDetector)
+        wait(12.5)
+        TeleportTo(motorBuyer.HumanoidRootPart)
+        wait(0.1)
+        fireclickdetector(motorBuyer.ClickDetector)
+        wait(0.5)
+        fireclickdetector(motorBuyer.ClickDetector)
+        wait(0.5)
+        if not motorAutomation then
+            break
+        end
+    end
+
 end
 
 
@@ -156,4 +194,15 @@ d:Toggle("Bottles",function(bool)
     bottleAutomation = bool
     print("Bottle automation is set to " .. bottleAutomation)
     if bottleAutomation then bottle() end
+end)
+
+d:Button("Motors",function()
+    count += 1
+    if count == 1 then
+        motorAutomation = true
+    elseif count == 2 then
+        motorAutomation = false
+        count = 0
+    end
+    motor()
 end)

@@ -1,7 +1,7 @@
 -- Variables --
 
 local workspace = game:GetService("Workspace")
-local player = game.PLayers.LocalPlayer
+local player = game.Players.LocalPlayer
 local mouse = player:GetMouse()
 local camera = workspace.CurrentCamera
 local gym = workspace["Local Gym"]["Local Gym"]
@@ -99,8 +99,7 @@ local w = library:CreateWindow("Tokyo Saga")
 local b = w:CreateFolder("Training")
 local c = w:CreateFolder("Teleport")
 local d = w:CreateFolder("Automation")
-local e = w:CreateFolder(".Destroy Gui")
-local f = w:CreateFolder("Stats")
+local e = w:CreateFolder("Stats")
 
 -- Training --
 
@@ -146,19 +145,15 @@ local defenseSt = player.Stats.Defense
 local speedSt = player.Stats.Speed
 local stamSt = player.Stats.Stamina
 
-local hitSpeedN = "Hit Speed"
-local strengthN = "Strength"
-local defenseN = "Defense"
-local speedN = "Speed"
-local stamN = "Stamina"
-
-f:Button(hitSpeedN,function()
-    hitSpeedN = hSpeed.Value
-    wait(2)
-    hitSpeedN = "Hit Speed"
+e:Button("Stats (Press F9)",function()
+    print("---------------- Stats -----------------")
+    print("Hit Speed: " .. hSpeed.Value)
+    print("Strength: " .. strengthSt.Value)
+    print("Defense: " .. defenseSt.Value)
+    print("Speed: " .. speedSt.Value)
+    print("Stamina: " .. stamSt.Value)
+    print("----------------------------------------")
 end)
-
-
 
 -- Automation --
 
@@ -167,7 +162,3 @@ d:Toggle("Bottles",function(bool)
     print(bottleAutomation)
     if bottleAutomation then bottle() end
 end)
-
--- destroy gui --
-
-e:DestroyGui()

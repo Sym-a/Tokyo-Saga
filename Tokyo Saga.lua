@@ -13,6 +13,7 @@ local motorBuyer = workspace["Motor Buyer"]
 local motorPart = workspace:FindFirstChild("Motor")
 
 count = 0
+count2 = 0
 bottleAutomation = false
 motorAutomation = false
 
@@ -86,6 +87,9 @@ function bottle()
         wait(0.5)
         fireclickdetector(game:GetService("Workspace")["Bottle Buyer"].ClickDetector)
         wait(1)
+        if not bottleAutomation then
+            break
+        end
     end
         
 end
@@ -95,27 +99,25 @@ function motor()
     while motorAutomation do
         TeleportTo(motorQuestGiver.HumanoidRootPart)
         wait(0.1)
-        fireclickdetector(motorQuestGiver.ClickDetector)
-        wait()
-        fireclickdetector(motorQuestGiver.ClickDetector)
-        wait(0.5)
-        fireclickdetector(motorQuestGiver.ClickDetector)
-        wait(0.5)
-        fireclickdetector(motorQuestGiver.ClickDetector)
+        for x = 1, 4 do
+            fireclickdetector(motorQuestGiver.ClickDetector)
+            wait(0.1)
+        end
         wait(1)
         TeleportTo(motorPart.Base)
         wait(0.1)
         fireclickdetector(motorPart.ClickDetector)
         wait()
-        fireclickdetector(motorPart.ClickDetector)
-        fireclickdetector(motorPart.ClickDetector)
-        wait(12.5)
+        for x = 1, 7 do
+            fireclickdetector(motorPart.ClickDetector)
+        end
+        wait(11)
         TeleportTo(motorBuyer.HumanoidRootPart)
         wait(0.1)
-        fireclickdetector(motorBuyer.ClickDetector)
-        wait(0.5)
-        fireclickdetector(motorBuyer.ClickDetector)
-        wait(0.5)
+        for x = 1, 3 do
+            fireclickdetector(motorBuyer.ClickDetector)
+            wait(0.5)
+        end
         if not motorAutomation then
             break
         end
@@ -190,19 +192,24 @@ end)
 
 -- Automation --
 
-d:Toggle("Bottles",function(bool)
-    bottleAutomation = bool
-    print("Bottle automation is set to " .. bottleAutomation)
-    if bottleAutomation then bottle() end
+d:Button("Bottles",function()
+    count += 1
+    if count == 1 then
+        bottleAutomation = true
+    elseif count == 2 then
+        bottleAutomation = false
+        count = 0
+    end
+    bottle()
 end)
 
 d:Button("Motors",function()
-    count += 1
-    if count == 1 then
+    count2 += 1
+    if count2 == 1 then
         motorAutomation = true
-    elseif count == 2 then
+    elseif count2 == 2 then
         motorAutomation = false
-        count = 0
+        count2 = 0
     end
     motor()
 end)

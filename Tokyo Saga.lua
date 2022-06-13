@@ -11,6 +11,7 @@ local npcBottles = workspace["Npc Bottles"].HumanoidRootPart
 local motorQuestGiver = workspace["Quest Motor"]
 local motorBuyer = workspace["Motor Buyer"]
 local motorPart = workspace:FindFirstChild("Motor")
+local antiCheat = game:GetService("ReplicatedStorage").ToolModules
 
 count = 0
 count2 = 0
@@ -148,7 +149,8 @@ local w = library:CreateWindow("Tokyo Saga")
 local b = w:CreateFolder("Training")
 local c = w:CreateFolder("Teleport")
 local d = w:CreateFolder("Automation")
-local e = w:CreateFolder("Stats")
+local e = w:CreateFolder("Refill")
+local f = w:CreateFolder("Stats")
 
 -- Training --
 
@@ -186,24 +188,6 @@ c:Button("Bottle Buyer",function()
     TeleportTo(bottleBuyer)
 end)
 
--- Stats --
-
-local hSpeed = player.Stats.HitSpeed
-local strengthSt = player.Stats.Strength
-local defenseSt = player.Stats.Defense
-local speedSt = player.Stats.Speed
-local stamSt = player.Stats.Stamina
-
-e:Button("Stats (Press F9)",function()
-    print("---------------- Stats -----------------")
-    print("Hit Speed: " .. hSpeed.Value)
-    print("Strength: " .. strengthSt.Value)
-    print("Defense: " .. defenseSt.Value)
-    print("Speed: " .. speedSt.Value)
-    print("Stamina: " .. stamSt.Value)
-    print("----------------------------------------")
-end)
-
 -- Automation --
 
 d:Button("Bottles",function()
@@ -237,4 +221,31 @@ d:Button("inf 2x XP",function()
         countxp = 0
     end
     XP()
+end)
+
+-- Refill --
+
+e:Button("Hunger",function()
+    
+    local hunger = player.Stats.Hungry
+    hunger.Value = 100
+
+end)
+
+-- Stats --
+
+local hSpeed = player.Stats.HitSpeed
+local strengthSt = player.Stats.Strength
+local defenseSt = player.Stats.Defense
+local speedSt = player.Stats.Speed
+local stamSt = player.Stats.Stamina
+
+f:Button("Stats (Press F9)",function()
+    print("---------------- Stats -----------------")
+    print("Hit Speed: " .. hSpeed.Value)
+    print("Strength: " .. strengthSt.Value)
+    print("Defense: " .. defenseSt.Value)
+    print("Speed: " .. speedSt.Value)
+    print("Stamina: " .. stamSt.Value)
+    print("----------------------------------------")
 end)

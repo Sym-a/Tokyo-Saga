@@ -14,8 +14,10 @@ local motorPart = workspace:FindFirstChild("Motor")
 
 count = 0
 count2 = 0
+countxp = 0
 bottleAutomation = false
 motorAutomation = false
+xpAutomation = false
 
 if pizza:IsA("Folder") then
     pizzaPlace = pizza.Pizza
@@ -125,6 +127,18 @@ function motor()
 
 end
 
+function XP()
+
+    while xpAutomation do
+        game:GetService("ReplicatedStorage").Quest.Protein:FireServer()
+        wait(180)
+        if not xpAutomation then
+            break
+        end
+    end
+
+end
+
 
 ---- gui ----
 
@@ -212,4 +226,15 @@ d:Button("Motors",function()
         count2 = 0
     end
     motor()
+end)
+
+d:Button("inf 2x XP",function()
+    countxp += 1
+    if countxp == 1 then
+        xpAutomation = true
+    elseif countxp == 2 then
+        xpAutomation = false
+        countxp = 0
+    end
+    XP()
 end)

@@ -31,7 +31,7 @@ function Pushup()
             [1] = game:GetService("Players").LocalPlayer.Character.Strength
         }
         game:GetService("ReplicatedStorage").Pushup:FireServer(unpack(args))
-        wait()
+        wait(3)
     end
 end
 
@@ -41,7 +41,7 @@ function JumpRope()
             [1] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Jump Rope")
         }
         game:GetService("ReplicatedStorage").Stamina:FireServer(unpack(args))
-        wait()
+        wait(3)
     end
 end
 
@@ -51,7 +51,7 @@ function SitUp()
             [1] = game:GetService("Players").LocalPlayer.Character.Defense
         }
         game:GetService("ReplicatedStorage").Defense:FireServer(unpack(args))
-        wait()
+        wait(3)
     end
 end
 
@@ -61,7 +61,7 @@ function Weight()
             [1] = game:GetService("Players").LocalPlayer.Character.Weight
         }
         game:GetService("ReplicatedStorage").Weight:FireServer(unpack(args))
-        wait()
+        wait(3)
     end
 end
 
@@ -131,7 +131,7 @@ function XP()
 
     while xpAutomation do
         game:GetService("ReplicatedStorage").Quest.Protein:FireServer()
-        wait(180)
+        wait(60)
         if not xpAutomation then
             break
         end

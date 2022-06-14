@@ -307,7 +307,7 @@ f:Button("Stats (Press F9)",function()
     print("----------------------------------------")
 end)
 
--- inf dodges --
+-- binds --
 
 d:Bind("Inf Dodges",Enum.KeyCode.C,function()
     countinfDod += 1

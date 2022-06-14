@@ -11,7 +11,6 @@ local npcBottles = workspace["Npc Bottles"].HumanoidRootPart
 local motorQuestGiver = workspace["Quest Motor"]
 local motorBuyer = workspace["Motor Buyer"]
 local motorPart = workspace:FindFirstChild("Motor")
-local antiCheat = game:GetService("ReplicatedStorage").ToolModules
 
 count = 0
 count2 = 0

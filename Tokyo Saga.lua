@@ -2,7 +2,6 @@
 
 local workspace = game:GetService("Workspace")
 local player = game.Players.LocalPlayer
-local mouse = player:GetMouse()
 local camera = workspace.CurrentCamera
 local gym = workspace["Local Gym"]["Local Gym"]
 local pizza = workspace.Pizza
@@ -15,9 +14,11 @@ local motorPart = workspace:FindFirstChild("Motor")
 count = 0
 count2 = 0
 countxp = 0
+countHung = 0
 bottleAutomation = false
 motorAutomation = false
 xpAutomation = false
+hungerAutomation = false
 
 if pizza:IsA("Folder") then
     pizzaPlace = pizza.Pizza
@@ -149,6 +150,19 @@ function XP()
 
 end
 
+function HungerAutF()
+
+    local hunger = player.Stats.Hungry
+    while hungerAutomation do
+        hunger.Value = 100
+        wait(60)
+        if not hungerAutomation then
+            break
+        end
+    end
+
+end
+
 
 ---- gui ----
 
@@ -225,7 +239,7 @@ d:Button("Motors",function()
     motor()
 end)
 
-d:Button("inf 2x XP",function()
+d:Button("Inf 2x XP",function()
     countxp += 1
     if countxp == 1 then
         xpAutomation = true
@@ -236,13 +250,22 @@ d:Button("inf 2x XP",function()
     XP()
 end)
 
+d:Button("Inf Hunger",function()
+    countHung += 1
+    if countHung == 1 then
+        hungerAutomation = true
+    elseif countHung == 2 then
+        hungerAutomation = false
+        countHung = 0
+    end
+    HungerAutF()
+end)
+
 -- Refill --
 
 e:Button("Hunger",function()
-    
     local hunger = player.Stats.Hungry
     hunger.Value = 100
-
 end)
 
 -- Stats --

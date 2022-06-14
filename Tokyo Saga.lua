@@ -65,6 +65,16 @@ function Weight()
     end
 end
 
+function advSitUps()
+    while true do
+        local args = {
+            [1] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Advance Defense")
+        }
+        game:GetService("ReplicatedStorage").AdvDefense:FireServer(unpack(args))
+        wait(0.1)
+    end
+end
+
 -- Teleporter --
 
 function TeleportTo(newPlace)
@@ -167,6 +177,10 @@ end)
 
 b:Button("Jump Rope",function()
     JumpRope()
+end)
+
+b:Button("Advanced Situps",function()
+    advSitUps()
 end)
 
 -- Teleport -- 

@@ -15,10 +15,12 @@ count = 0
 count2 = 0
 countxp = 0
 countHung = 0
+countinfDod = 0
 bottleAutomation = false
 motorAutomation = false
 xpAutomation = false
 hungerAutomation = false
+infDodAut = false
 
 if pizza:IsA("Folder") then
     pizzaPlace = pizza.Pizza
@@ -163,6 +165,25 @@ function HungerAutF()
 
 end
 
+function infDodges()
+
+    while infDodAut do
+        local args1 = {
+            [1] = "Dodge"
+        }
+        local args2 = {
+            [1] = "Release"
+        }
+        game:GetService("Players").LocalPlayer.Backpack.Dodge.RemoteEvent:FireServer(unpack(args1))
+        wait(0.5)
+        game:GetService("Players").LocalPlayer.Backpack.Dodge.RemoteEvent:FireServer(unpack(args2))
+        if not infDodAut then
+            break
+        end
+    end
+
+end
+
 
 ---- gui ----
 
@@ -284,4 +305,17 @@ f:Button("Stats (Press F9)",function()
     print("Speed: " .. speedSt.Value)
     print("Stamina: " .. stamSt.Value)
     print("----------------------------------------")
+end)
+
+-- inf dodges --
+
+d:Bind("Inf Dodges",Enum.KeyCode.C,function()
+    countinfDod += 1
+    if countinfDod == 1 then
+        infDodAut = true
+    elseif countinfDod == 2 then
+        infDodAut = false
+        countinfDod = 0
+    end
+    infDodges()
 end)

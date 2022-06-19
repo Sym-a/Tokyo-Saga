@@ -1,7 +1,7 @@
 -- Variables --
 
+player = game.Players.LocalPlayer
 local workspace = game:GetService("Workspace")
-local player = game.Players.LocalPlayer
 local camera = workspace.CurrentCamera
 local gym = workspace["Local Gym"]["Local Gym"]
 local pizza = workspace.Pizza
@@ -10,21 +10,32 @@ local npcBottles = workspace["Npc Bottles"].HumanoidRootPart
 local motorQuestGiver = workspace["Quest Motor"]
 local motorBuyer = workspace["Motor Buyer"]
 local motorPart = workspace:FindFirstChild("Motor")
+local stats1 = player.Stats
+local stats2 = player.Stats2
+local hunger = stats1.Hungry
+local dashPower1 = stats1.DashPower 
+local dashpower2 = stats2.DashPower
 
 count = 0
 count2 = 0
 countxp = 0
 countHung = 0
 countinfDod = 0
+countDebounce = 0
 bottleAutomation = false
 motorAutomation = false
 xpAutomation = false
 hungerAutomation = false
 infDodAut = false
+a = false
 
 if pizza:IsA("Folder") then
     pizzaPlace = pizza.Pizza
 end
+
+hunger.Value = 100
+dashPower1.Value = 50
+dashpower2.Value = 50
 
 -- Training --
 
@@ -285,8 +296,12 @@ end)
 -- Refill --
 
 e:Button("Hunger",function()
-    local hunger = player.Stats.Hungry
     hunger.Value = 100
+end)
+
+e:Button("Fix Dodge", function()
+    dashPower1.Value = 50
+    dashpower2.Value = 50
 end)
 
 -- Stats --
@@ -307,7 +322,7 @@ f:Button("Stats (Press F9)",function()
     print("----------------------------------------")
 end)
 
--- binds --
+-- Binds --
 
 d:Bind("Inf Dodges",Enum.KeyCode.C,function()
     countinfDod += 1

@@ -1,6 +1,7 @@
 -- Variables --
 
 player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
 local workspace = game:GetService("Workspace")
 local camera = workspace.CurrentCamera
 local gym = workspace["Local Gym"]["Local Gym"]

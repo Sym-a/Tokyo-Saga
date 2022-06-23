@@ -344,3 +344,11 @@ g:Bind("Capoeira 320 Kick",Enum.KeyCode.X,function()
     
     game:GetService("Players").LocalPlayer.Character:FindFirstChild("320 Kick").Combat.M2:FireServer(unpack(args))
 end)
+
+g:Bind("Capoeira Back Kick",Enum.KeyCode.Z,function()
+    local args = {
+        [1] = game:GetService("Players").LocalPlayer.Character
+    }
+    
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Back Kick").Combat.M2:FireServer(unpack(args))
+end)

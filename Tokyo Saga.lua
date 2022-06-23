@@ -207,6 +207,7 @@ local c = w:CreateFolder("Teleport")
 local d = w:CreateFolder("Automation")
 local e = w:CreateFolder("Refill")
 local f = w:CreateFolder("Stats")
+local g = w:CreateFolder("KeyBinds")
 
 -- Training --
 
@@ -325,7 +326,7 @@ end)
 
 -- Binds --
 
-d:Bind("Inf Dodges",Enum.KeyCode.C,function()
+g:Bind("Inf Dodges",Enum.KeyCode.C,function()
     countinfDod += 1
     if countinfDod == 1 then
         infDodAut = true
@@ -334,4 +335,12 @@ d:Bind("Inf Dodges",Enum.KeyCode.C,function()
         countinfDod = 0
     end
     infDodges()
+end)
+
+g:Bind("Capoeira 320 Kick",Enum.KeyCode.X,function()
+    local args = {
+        [1] = game:GetService("Players").LocalPlayer.Character
+    }
+    
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("320 Kick").Combat.M2:FireServer(unpack(args))
 end)

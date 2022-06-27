@@ -207,7 +207,7 @@ function infM1s()
         }
 
         game:GetService("Players").LocalPlayer.Character.NonStyle.Combat.Hits:FireServer(unpack(args))
-        wait(0.01)
+        wait(0.1)
         if not infM1sBool then
             break
         end
@@ -372,7 +372,7 @@ g:Bind("Capoeira Back Kick",Enum.KeyCode.Z,function()
     game:GetService("Players").LocalPlayer.Character:FindFirstChild("Back Kick").Combat.M2:FireServer(unpack(args))
 end)
 
-g:Bind("Spam m1s",Enum.KeyCode.G,function()
+g:Bind("Spam m1s",Enum.KeyCode.V,function()
     countM1s += 1
     if countM1s == 1 then
         infM1sBool = true

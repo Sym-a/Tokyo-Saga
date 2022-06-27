@@ -23,12 +23,14 @@ countxp = 0
 countHung = 0
 countinfDod = 0
 countDebounce = 0
+countM1s = 0
 bottleAutomation = false
 motorAutomation = false
 xpAutomation = false
 hungerAutomation = false
 infDodAut = false
 a = false
+infM1sBool = false
 
 if pizza:IsA("Folder") then
     pizzaPlace = pizza.Pizza
@@ -196,6 +198,23 @@ function infDodges()
 
 end
 
+function infM1s()
+
+    while infM1sBool do
+        local args = {
+        [1] = 2,
+        [2] = game:GetService("Players").LocalPlayer.Character
+        }
+
+        game:GetService("Players").LocalPlayer.Character.NonStyle.Combat.Hits:FireServer(unpack(args))
+        wait(0.01)
+        if not infM1sBool then
+            break
+        end
+    end
+
+end
+
 
 ---- gui ----
 
@@ -351,4 +370,15 @@ g:Bind("Capoeira Back Kick",Enum.KeyCode.Z,function()
     }
     
     game:GetService("Players").LocalPlayer.Character:FindFirstChild("Back Kick").Combat.M2:FireServer(unpack(args))
+end)
+
+g:Bind("Spam m1s",Enum.KeyCode.G,function()
+    countM1s += 1
+    if countM1s == 1 then
+        infM1sBool = true
+    elseif countM1s == 2 then
+        infM1sBool = false
+        countM1s = 0
+    end
+    infM1s()
 end)
